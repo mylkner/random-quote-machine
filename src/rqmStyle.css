@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("./galaxy.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: "Anta", sans-serif;
+    color: white;
+}
+
+#quote-box {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#text {
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+#author {
+    font-style: italic;
+    margin: 10px 0 20px 0;
+}
+
+.btn-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#new-quote {
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 90px;
+    color: white;
+    background-color: black;
+    transition: background-color 0.1s;
+    margin-right: 10px;
+}
+
+#new-quote:hover {
+    cursor: pointer;
+    background-color: lightslategray;
+}
+
+#new-quote:active {
+    background-color: black;
+    transition-duration: 0ms;
+}
+
+.tweet {
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(102, 188, 241);
+    transition: background-color 0.1s;
+}
+
+.tweet:hover {
+    cursor: pointer;
+    background-color: rgb(10, 116, 236);
+}
+
+.tweet:active {
+    background-color: rgb(102, 188, 241);
+    transition-duration: 0ms;
+}

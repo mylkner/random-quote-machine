@@ -1,5 +1,11 @@
+import RandomQuoteMachine from "./rqm";
+
 function App() {
-    return <div></div>;
+    return (
+        <div>
+            <RandomQuoteMachine />
+        </div>
+    );
 }
 
 export default App;

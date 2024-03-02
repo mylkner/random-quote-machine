@@ -7,14 +7,7 @@ const RandomQuoteMachine = () => {
 
     const fetchData = () => {
         axios
-            .get(
-                "https://api.api-ninjas.com/v1/quotes?category=inspirational",
-                {
-                    headers: {
-                        "X-Api-Key": "bjxRNYErTWfdfOFMNVowqg==aoe3MwCWmlZcnGxO",
-                    },
-                }
-            )
+            .get()
             .then((res) => {
                 if (res.data[0].quote.length <= 200) {
                     setQuote(res.data[0].quote);

@@ -2,34 +2,45 @@ import { useEffect, useState } from "react";
 import "./rqmStyle.css";
 import axios from "axios";
 const RandomQuoteMachine = () => {
-    const [quotes, setQuote] = useState();
-    const [author, setAuthor] = useState();
-
-    const fetchData = () => {
-        axios
-            .get()
-            .then((res) => {
-                if (res.data[0].quote.length <= 200) {
-                    setQuote(res.data[0].quote);
-                    setAuthor(res.data[0].author);
-                } else {
-                    fetchData();
-                }
-            })
-            .catch((err) => console.log(err));
-    };
+    const [data, setData] = useState({
+        dataArr: [],
+        quote: "",
+        author: "",
+    });
 
     useEffect(() => {
-        fetchData();
+        axios
+            .get("https://type.fit/api/quotes")
+            .then((res) => {
+                const randomNum = Math.floor(Math.random() * 16);
+                setData({
+                    dataArr: res.data,
+                    quote: res.data[randomNum].text,
+                    author: res.data[randomNum].author.replace(
+                        ", type.fit",
+                        ""
+                    ),
+                });
+            })
+            .catch((err) => console.log(err));
     }, []);
+
+    const generate = (d) => {
+        const randomNum = Math.floor(Math.random() * 16);
+        setData({
+            ...data,
+            quote: d.dataArr[randomNum].text,
+            author: d.dataArr[randomNum].author.replace(", type.fit", ""),
+        });
+    };
 
     return (
         <div className="container">
             <div id="quote-box">
-                <h1 id="text">{quotes}</h1>
-                <p id="author">{author}</p>
+                <h1 id="text">{data.quote}</h1>
+                <p id="author">{data.author}</p>
                 <div className="btn-link">
-                    <button onClick={() => fetchData()} id="new-quote">
+                    <button onClick={() => generate(data)} id="new-quote">
                         New quote
                     </button>
                     <a
